@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html ng-app="personListApp">
+<head>
+    <title></title>
+    <script src="Scripts/angular/angular.js"></script>
+    <script src="Scripts/angular/angular-route.js"></script>
+   
+    <script src="Scripts/app/app.js"></script>
+
+    <script src="Scripts/app/filters/filter.js"></script>
+
+
+    <script src="Scripts/app/services/services.js"></script>
+    <script src="Scripts/App/services/mainApp.js"></script>
+    <script src="Scripts/App/services/personHandler.js"></script>
+    <script src="Scripts/App/services/errorHandler.js"></script>
+
+    <script src="Scripts/App/controllers/MainCtrl.js"></script>
+    <script src="Scripts/App/controllers/PersonAddCtrl.js"></script>
+    <script src="Scripts/App/controllers/PersonDetailCtrl.js"></script>
+    <script src="Scripts/App/controllers/PersonEditCtrl.js"></script>
+    <script src="Scripts/App/controllers/PersonListCtrl.js"></script>
+
+
+    
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+
+</head>
+<body ng-controller="MainCtrl">
+    
+    <div class="alert alert-danger" ng-show="error()">
+        {{error()}}
+        <input type="button" value="X" ng-click="clearError()" />
+    </div>
+
+    <div class="container-fluid" ng-hide="error()" ng-cloak>
+        <div class="row">
+            <div class="col-md-12">
+                <person-summary></person-summary>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+               
+                <div class="list-group">
+                    <h5 class="list-group-item active">Links</h5>
+                    <a href="#/persons" class="list-group-item" ng-class="getLinkClass('1')" >View Persons</a>
+                    <a href="#/newperson" class="list-group-item" ng-class="getLinkClass('2')" >Add person</a>
+                </div>
+
+            </div>
+
+            <div class="col-md-10">
+                <div class="list-group">
+                    <h5 class="list-group-item active">{{sectionTitle()}}</h5>
+                    <div ng-view class="list-group-item">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

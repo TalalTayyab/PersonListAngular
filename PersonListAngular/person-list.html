@@ -1,0 +1,77 @@
+﻿
+<div class="form-inline">
+    <div class="form-group pull-right">
+
+        <select ng-model="orderProp" class="form-control">
+            <option value="id">id</option>
+            <option value="name">name</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" ng-model="query" placeholder="filter" />
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" ng-model="showEmployed" /> Show Employed
+        </label>
+    </div>
+</div>
+
+<br />
+
+<div class="panel">
+    
+
+        
+        <table class="table table-striped  table-condensed" >
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Employed</th>
+                    <th></th>
+                </tr>
+
+            </thead>
+
+
+
+
+            <tbody>
+                <tr ng-repeat="person in persons | filter: {name:query} | employedPersons: showEmployed | orderBy: orderProp">
+                    <td>{{$index+1}}</td>
+                    <td>
+                        {{person.id}}
+                    </td>
+                    <td>
+                        <a href="#/person/{{person.id}}" ng-hide="ePerson.id==person.id">{{person.name}}</a>
+                        <input type="text" ng-model="ePerson.name" ng-show="ePerson.id==person.id"  />
+                    </td>
+                    <td>
+                        <span ng-hide="ePerson.id==person.id">
+                            {{person.employed | checkmark}}
+                        </span>
+                        <input type="checkbox" ng-model="ePerson.employed" ng-show="ePerson.id==person.id" />
+                    </td>
+                    <td>
+                        <span class="pull-right">
+                            <button class="btn btn-primary" ng-click="editPerson(person)" ng-hide="ePerson.id==person.id">Edit</button>
+                            <button class="btn btn-primary" ng-disabled="!validPerson(ePerson)" ng-click="updatePerson(ePerson)" ng-show="ePerson.id==person.id">Update</button>
+                            <button class="btn btn-danger" ng-click="deletePerson(person)" ng-hide="ePerson.id==person.id">Delete</button>
+                            <button class="btn btn-warning" ng-click="cancelUpdate(ePerson)" ng-show="ePerson.id==person.id">Cancel</button>
+                        </span>
+                      
+                    </td>
+                </tr>
+
+
+
+            </tbody>
+
+
+        </table>
+   
+</div>
+
+

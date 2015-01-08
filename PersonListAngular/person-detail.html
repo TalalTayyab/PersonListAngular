@@ -1,0 +1,40 @@
+﻿<div class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-2">Id</label>
+        <div class="col-md-10">
+            <p class="form-control-static">{{person.id}}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Name</label>
+        <div class="col-md-10">
+            <p class="form-control-static">{{person.name}}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Employed</label>
+        <div class="col-md-10">
+            <p class="form-control-static">{{person.employed | checkmark}}</p>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <a href="#/personedit/{{person.id}}" class="btn btn-primary">Edit</a>
+            <a href="#/persons" class="btn btn-default">Back</a>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
